@@ -1,0 +1,53 @@
+project url
+
+from django.contrib import admin
+from django.urls import path, include
+# imported views
+
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    # configured the url
+    path('', include('App.urls'), name="homepage"),
+   ]
+   
+   
+   
+   
+project settings
+
+INSTALLED_APPS = [
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+    'App',
+]
+
+
+App url
+
+from django.urls import path, include
+
+from . import views
+
+urlpatterns = [
+    path('', views.hello, name='hello'),
+]
+
+
+app views
+
+# from django.http import HttpResponse
+#
+# def index(request):
+#     return HttpResponse('Hello, World!')
+
+from django.http import HttpResponse
+
+def hello(request):
+   text = """<h1>welcome to my app !</h1>"""
+   return HttpResponse(text)
+   
+ 
